@@ -12,7 +12,7 @@
   "walk_foot_height": 0.023,
   "walk_trunk_pitch": 0.0,
   "walk_foot_rise_ratio": 0.3,
-  "single_support_duration": 0.25,
+  "single_support_duration": 0.20,
   "single_support_timesteps": 12,
   "foot_length": 0.055,
   "foot_width": 0.035,
