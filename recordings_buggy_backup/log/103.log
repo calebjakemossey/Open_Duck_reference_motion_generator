@@ -1,0 +1,37 @@
+<frozen importlib._bootstrap>:241: RuntimeWarning: to-Python converter for std::vector<Eigen::Matrix<double, 3, 1, 0, 3, 1>, std::allocator<Eigen::Matrix<double, 3, 1, 0, 3, 1> > > already registered; second conversion method ignored.
+<frozen importlib._bootstrap>:241: RuntimeWarning: to-Python converter for boost::python::detail::container_element<std::vector<Eigen::Matrix<double, 3, 1, 0, 3, 1>, std::allocator<Eigen::Matrix<double, 3, 1, 0, 3, 1> > >, unsigned long, boost::python::detail::final_vector_derived_policies<std::vector<Eigen::Matrix<double, 3, 1, 0, 3, 1>, std::allocator<Eigen::Matrix<double, 3, 1, 0, 3, 1> > >, false> > already registered; second conversion method ignored.
+<frozen importlib._bootstrap>:241: RuntimeWarning: to-Python converter for std::vector<int, std::allocator<int> > already registered; second conversion method ignored.
+<frozen importlib._bootstrap>:241: RuntimeWarning: to-Python converter for std::vector<double, std::allocator<double> > already registered; second conversion method ignored.
+<frozen importlib._bootstrap>:241: RuntimeWarning: to-Python converter for std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > already registered; second conversion method ignored.
+WARNING: Robot has the following self collisions in neutral position:
+  -trunk_assembly_18 collides with neck_pitch_assembly_0
+  -trunk_assembly_21 collides with neck_pitch_assembly_1
+  -trunk_assembly_23 collides with hip_roll_assembly_2_1
+  -trunk_assembly_28 collides with hip_roll_assembly_1
+  -hip_roll_assembly_3 collides with left_roll_to_pitch_assembly_0
+  -hip_roll_assembly_6 collides with left_roll_to_pitch_assembly_0
+  -left_roll_to_pitch_assembly_2 collides with knee_and_ankle_assembly_3
+  -knee_and_ankle_assembly_5 collides with knee_and_ankle_assembly_2_2
+  -knee_and_ankle_assembly_2_4 collides with foot_assembly_3
+  -neck_pitch_assembly_3 collides with head_pitch_to_yaw_0
+  -head_pitch_to_yaw_0 collides with neck_yaw_assembly_2
+  -neck_yaw_assembly_0 collides with head_assembly_26
+  -hip_roll_assembly_2_3 collides with right_roll_to_pitch_assembly_0
+  -hip_roll_assembly_2_6 collides with right_roll_to_pitch_assembly_0
+  -right_roll_to_pitch_assembly_2 collides with right_cache_3
+  -right_cache_5 collides with knee_and_ankle_assembly_3_2
+  -knee_and_ankle_assembly_3_4 collides with foot_assembly_2_0
+WARNING: Can't find head frames in the model, camera_look_at won't work
+gait_parameters {'dx': -0.02, 'dy': 0.0, 'dtheta': -0.07, 'duration': 8, 'hardware': True, 'double_support_ratio': 0.5, 'startend_double_support_ratio': 1.0, 'planned_timesteps': 48, 'replan_timesteps': 10, 'walk_com_height': 0.205, 'walk_foot_height': 0.04, 'walk_trunk_pitch': -4, 'walk_foot_rise_ratio': 0.02, 'single_support_duration': 0.18, 'single_support_timesteps': 10, 'foot_length': 0.06, 'feet_spacing': 0.16, 'zmp_margin': 0.0, 'foot_zmp_target_x': 0.0, 'foot_zmp_target_y': -0.03, 'walk_max_dtheta': 1.0, 'walk_max_dy': 0.1, 'walk_max_dx_forward': 0.08, 'walk_max_dx_backward': 0.03, 'joints': ['left_hip_yaw', 'left_hip_roll', 'left_hip_pitch', 'left_knee', 'left_ankle', 'neck_pitch', 'head_pitch', 'head_yaw', 'head_roll', 'right_hip_yaw', 'right_hip_roll', 'right_hip_pitch', 'right_knee', 'right_ankle'], 'joint_angles': {'neck_pitch': 20, 'head_pitch': -26, 'head_yaw': 0, 'head_roll': 0}}
+Placing the robot in the initial position...
+Initial position reached
+{'left_hip_yaw': 0.04728479284141578, 'left_hip_roll': 0.12079839902402696, 'left_hip_pitch': -0.7614984847023918, 'left_knee': 1.3286807212466312, 'left_ankle': -0.6383240768650629, 'neck_pitch': 0.3490658503988659, 'head_pitch': -0.4537856055185257, 'head_yaw': -5.228476486494518e-25, 'head_roll': -8.375380117186782e-25, 'right_hip_yaw': 0.03815872003400189, 'right_hip_roll': -0.007620369630365996, 'right_hip_pitch': 0.7589026159420145, 'right_knee': -1.3680176939520106, 'right_ankle': 0.6797392288185028}
+## period: 0.54
+recorded 500 frames
+avg lin_vel_x -0.0119
+avg lin_vel_y -0.0741
+avg yaw 0.0012
+computed xvel: -0.074, mean xvel: -0.0119
+computed yvel: 0.0, mean yvel: -0.0741
+computed thetavel: -0.259, mean thetavel: 0.0012
+DONE, saving 103_-0.074_0.0_-0.259.json

@@ -34,6 +34,7 @@ class PlacoWalkEngine:
 
         # Loading the robot
         self.robot = placo.HumanoidRobot(model_filename)
+        self.robot_type = robot_type
 
         self.parameters = placo.HumanoidParameters()
         if init_params is not None:
@@ -46,11 +47,22 @@ class PlacoWalkEngine:
         self.solver = placo.KinematicsSolver(self.robot)
         self.solver.enable_velocity_limits(True)
         self.robot.set_velocity_limits(12.0)
-        self.solver.enable_joint_limits(False)
         self.solver.dt = DT / REFINE
 
-        self.robot.set_joint_limits("left_knee", *knee_limits)
-        self.robot.set_joint_limits("right_knee", *knee_limits)
+        if self.robot_type == "open_duck_mini_v2":
+            # Mirror-symmetric legs: home pose has left_knee=+1.368, right_knee=-1.368,
+            # left_ankle=-0.784, right_ankle=+0.784. Symmetric URDF limits [-pi/2, +pi/2]
+            # let Placo's IK pick either branch, which intermittently flips signs.
+            # Lock each side to its physical branch and turn limits on.
+            self.solver.enable_joint_limits(True)
+            self.robot.set_joint_limits("left_knee", 0.01, 1.5708)
+            self.robot.set_joint_limits("right_knee", -1.5708, -0.01)
+            self.robot.set_joint_limits("left_ankle", -1.5708, -0.01)
+            self.robot.set_joint_limits("right_ankle", 0.01, 1.5708)
+        else:
+            self.solver.enable_joint_limits(False)
+            self.robot.set_joint_limits("left_knee", *knee_limits)
+            self.robot.set_joint_limits("right_knee", *knee_limits)
 
         # Creating the walk QP tasks
         self.tasks = placo.WalkTasks()
@@ -190,6 +202,12 @@ class PlacoWalkEngine:
         self.trajectory = self.walk.plan(self.supports, self.robot.com_world(), 0.0)
 
     def set_traj(self, d_x, d_y, d_theta):
+        # When walking backward, Placo's body-frame yaw rate produces a world-space
+        # trajectory that curves opposite to user intuition (commanding "back + left"
+        # curves to the body's right). Flip dtheta when going backward so the
+        # commanded direction matches the visible trajectory direction.
+        if d_x < 0:
+            d_theta = -d_theta
         self.d_x = d_x
         self.d_y = d_y
         self.d_theta = d_theta

@@ -76,3 +76,20 @@ uv run open_duck_reference_motion_generator/gait_playground.py --duck ["go_bdx",
 - A document to specify the reference motion format, if someone wants to convert some mocap data to use for the imitation reward ?
 - The repo duck themed, but it could be a generic motion generator based on placo for biped robots (will add sigmaban at some point)
   - Sub TODO : explain how to add a new robot
+
+---
+
+## Local Modifications (Caleb's fork)
+
+### URDF
+- `robots/open_duck_mini_v2/open_duck_mini_v2.urdf` re-exported from fixed OnShape CAD with bilateral symmetry corrected (37mm right-leg offset removed). Joint axes are now true mirrors.
+
+### auto_gait.json
+- Fixed zero-entry bug: step sizes now produce grids that include zero for dy and dtheta
+- Grid: 6 dx x 5 dy x 7 dtheta = 210 motions (previously 240 with missing zero values)
+
+### Parallelism
+- Use `-j2` on a 32 GB RAM laptop. `-j8` causes OOM crashes. 210 motions with `-j2` takes ~18 min.
+
+### Visual verification
+- Generated motions can be verified in MuJoCo viewer using `Open_Duck_Playground/analysis/replay_reference.py`

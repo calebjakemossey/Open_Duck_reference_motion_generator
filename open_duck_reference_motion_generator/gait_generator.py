@@ -140,6 +140,10 @@ first_T_world_fbase = pwe.robot.get_T_world_fbase()
 first_T_world_leftFoot = pwe.robot.get_T_world_left()
 first_T_world_rightFoot = pwe.robot.get_T_world_right()
 
+if args.dx == 0 and args.dy == 0 and args.dtheta == 0:
+    args.stand = True
+    print("*** Zero velocity command: using standing pose instead of walk engine ***")
+
 pwe.set_traj(args.dx, args.dy, args.dtheta + 0.00955)
 if DISPLAY_MESHCAT:
     viz = robot_viz(pwe.robot)
@@ -176,11 +180,8 @@ def compute_angular_velocity(quat, prev_quat, dt):
     # Compute relative rotation: r_rel = r0^(-1) * r1
     r_rel = r0.inv() * r1
 
-    # Convert relative rotation to axis-angle
-    axis, angle = r_rel.as_rotvec(), np.linalg.norm(r_rel.as_rotvec())
-
     # Angular velocity (in radians per second)
-    angular_velocity = axis * (angle / dt)
+    angular_velocity = r_rel.as_rotvec() / dt
 
     return list(angular_velocity)
 
@@ -286,7 +287,7 @@ while True:
             (np.array(right_toe_pos) - np.array(prev_right_toe_pos)) / (1 / FPS)
         )
 
-        foot_contacts = pwe.get_current_support_phase()
+        foot_contacts = [1, 1] if args.stand else pwe.get_current_support_phase()
 
         if prev_initialized:
             if args.hardware:

@@ -1,2 +1,9 @@
 uv.lock
-open_duck_reference_motion_generator/__pycache__/
+open_duck_reference_motion_generator/__pycache__/checkpoints/
+*.onnx
+wandb/
+.venv/
+__pycache__/
+.kaggle_dataset/
+disney_bdx_paper.pdf
+.tmp/

@@ -1,0 +1,44 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/lakieb/Documents/open_duck_mini_research/Open_Duck_Playground/playground/open_duck_mini_v2/runner.py", line 87, in <module>
+    main()
+  File "/home/lakieb/Documents/open_duck_mini_research/Open_Duck_Playground/playground/open_duck_mini_v2/runner.py", line 81, in main
+    runner = OpenDuckMiniV2Runner(args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lakieb/Documents/open_duck_mini_research/Open_Duck_Playground/playground/open_duck_mini_v2/runner.py", line 31, in __init__
+    self.env = self.env_file[1](task=args.task, config=self.env_config)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lakieb/Documents/open_duck_mini_research/Open_Duck_Playground/playground/open_duck_mini_v2/joystick.py", line 127, in __init__
+    self._post_init()
+  File "/home/lakieb/Documents/open_duck_mini_research/Open_Duck_Playground/playground/open_duck_mini_v2/joystick.py", line 137, in _post_init
+    self.PRM = PolyReferenceMotion(
+               ^^^^^^^^^^^^^^^^^^^^
+  File "/home/lakieb/Documents/open_duck_mini_research/Open_Duck_Playground/playground/common/poly_reference_motion.py", line 56, in __init__
+    data = pickle.load(open(polynomial_coefficients, "rb"))
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'playground/open_duck_mini_v2/data/polynomial_coefficients.pkl'
+Exception ignored in atexit callback: <function FileWriter.__init__.<locals>.cleanup at 0x729805546200>
+Traceback (most recent call last):
+  File "/home/lakieb/Documents/open_duck_mini_research/Open_Duck_Playground/.venv/lib/python3.12/site-packages/tensorboardX/writer.py", line 122, in cleanup
+    self.event_writer.close()
+  File "/home/lakieb/Documents/open_duck_mini_research/Open_Duck_Playground/.venv/lib/python3.12/site-packages/tensorboardX/event_file_writer.py", line 154, in close
+    self._worker.stop()
+  File "/home/lakieb/Documents/open_duck_mini_research/Open_Duck_Playground/.venv/lib/python3.12/site-packages/tensorboardX/event_file_writer.py", line 185, in stop
+    self._queue.put(self._shutdown_signal)
+  File "/home/lakieb/.local/share/uv/python/cpython-3.12.2-linux-x86_64-gnu/lib/python3.12/multiprocessing/queues.py", line 94, in put
+    self._start_thread()
+  File "/home/lakieb/.local/share/uv/python/cpython-3.12.2-linux-x86_64-gnu/lib/python3.12/multiprocessing/queues.py", line 192, in _start_thread
+    self._thread.start()
+  File "/home/lakieb/.local/share/uv/python/cpython-3.12.2-linux-x86_64-gnu/lib/python3.12/threading.py", line 992, in start
+    _start_new_thread(self._bootstrap, ())
+RuntimeError: can't create new thread at interpreter shutdown
+Failed to import warp: No module named 'warp'
+Failed to import mujoco_warp: No module named 'warp'
+xml: /home/lakieb/Documents/open_duck_mini_research/Open_Duck_Playground/playground/open_duck_mini_v2/xmls/scene_flat_terrain.xml
+actuators: ['left_hip_yaw', 'left_hip_roll', 'left_hip_pitch', 'left_knee', 'left_ankle', 'neck_pitch', 'head_pitch', 'head_yaw', 'head_roll', 'right_hip_yaw', 'right_hip_roll', 'right_hip_pitch', 'right_knee', 'right_ankle']
+joints: ['floating_base', 'left_hip_yaw', 'left_hip_roll', 'left_hip_pitch', 'left_knee', 'left_ankle', 'neck_pitch', 'head_pitch', 'head_yaw', 'head_roll', 'right_hip_yaw', 'right_hip_roll', 'right_hip_pitch', 'right_knee', 'right_ankle']
+backlash joints: []
+actuator joints ids: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+actuator joints dict: {'left_hip_yaw': 1, 'left_hip_roll': 2, 'left_hip_pitch': 3, 'left_knee': 4, 'left_ankle': 5, 'neck_pitch': 6, 'head_pitch': 7, 'head_yaw': 8, 'head_roll': 9, 'right_hip_yaw': 10, 'right_hip_roll': 11, 'right_hip_pitch': 12, 'right_knee': 13, 'right_ankle': 14}
+floating qpos addr: 0 qvel addr: 0
